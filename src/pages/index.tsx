@@ -1,4 +1,6 @@
 // pages/index.tsx
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -79,7 +81,7 @@ export default function Home() {
       title: "Online Movie Ticket Booking",
       description: "React + Spring Boot application",
       tech: ["React", "Spring Boot", "AWS", "MySQL"],
-      link: "https://github.com/RahulKumar035/Online-Movie-Ticket-Booking",
+      link: "https://github.com/RahulKumar035/Onilne-Movie-Ticket-Booking-System",
       achievements: [
         "User-friendly booking interface",
         "AWS deployment",
@@ -374,42 +376,99 @@ export default function Home() {
     </div>
 
     {/* Right Side - Contact Form */}
-    <form className="space-y-6">
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-        <input
-          type="text"
-          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter your name"
-        />
-      </div>
+    {(() => {
+      const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+      });
+      const [status, setStatus] = useState('');
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-        <input
-          type="email"
-          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-          placeholder="your@email.com"
-        />
-      </div>
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-        <textarea
-          rows={4}
-          className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-          placeholder="How can I help you?"
-        ></textarea>
-      </div>
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setStatus('Sending...');
 
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="w-full bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700"
-      >
-        Send Message
-      </motion.button>
-    </form>
+        emailjs.send(
+          'service_epfrhjz', // Replace with your EmailJS Service ID
+          'template_16ok1do', // Replace with your EmailJS Template ID
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+          },
+          'imWJQpaUpAa3LA8s-7z5h' // Replace with your EmailJS Public Key
+        )
+        .then((result) => {
+          setStatus('Message sent successfully!');
+          setFormData({ name: '', email: '', message: '' }); // Reset form
+        }, (error) => {
+          setStatus('Failed to send message. Please try again.');
+          console.error('EmailJS error:', error);
+        });
+      };
+
+      return (
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={4}
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              placeholder="How can I help you?"
+              required
+            ></textarea>
+          </div>
+
+          <motion.button
+            type="submit"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700"
+          >
+            Send Message
+          </motion.button>
+
+          {status && (
+            <p className={`mt-4 text-center ${status.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
+              {status}
+            </p>
+          )}
+        </form>
+      );
+    })()}
   </div>
 </motion.section>
       </motion.main>
