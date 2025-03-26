@@ -192,67 +192,67 @@ export default function Home() {
 
         {/* Education Section */}
         <motion.section 
-          variants={itemVariants}
-          className="mb-16 bg-white rounded-xl p-8 shadow-lg"
-        >
-          <h2 className="text-3xl font-bold mb-8 flex items-center">
-            <AcademicCapIcon className="w-8 h-8 mr-2 text-blue-500" />
-            Education
-          </h2>
+  variants={itemVariants}
+  className="mb-16 bg-gradient-to-r from-blue-100 to-green-100 rounded-xl p-6 sm:p-8 shadow-lg section-card"
+>
+  <h2 className="text-2xl sm:text-3xl font-bold mb-8 flex items-center text-gray-800">
+    <AcademicCapIcon className="w-8 h-8 mr-2 text-blue-500" />
+    Education
+  </h2>
 
-          <div className="space-y-6">
-            <div className="border-l-4 border-blue-200 pl-4">
-              <h3 className="text-xl font-semibold">PG-DAC (Advanced Computing)</h3>
-              <p className="text-gray-600">Sunbeam Institute of Technology, CDAC</p>
-              <p className="text-sm text-gray-500">Sep 2022 - Mar 2023 | 65.75%</p>
-            </div>
+  <div className="space-y-6">
+    <div className="border-l-4 border-blue-200 pl-4">
+      <h3 className="text-lg sm:text-xl font-semibold text-gray-800 block">PG-DAC (Advanced Computing)</h3>
+      <p className="text-gray-600 mt-1">Sunbeam Institute of Technology, CDAC</p>
+      <p className="text-sm text-gray-500 mt-1">Sep 2022 - Mar 2023 | 65.75%</p>
+    </div>
 
-            <div className="border-l-4 border-green-200 pl-4">
-              <h3 className="text-xl font-semibold">B.Tech (Computer Science)</h3>
-              <p className="text-gray-600">Rajiv Gandhi Proudyogiki Vishwavidyalaya</p>
-              <p className="text-sm text-gray-500">Aug 2018 - Jun 2022 | 7.46/10 CGPA</p>
-            </div>
-          </div>
-        </motion.section>
+    <div className="border-l-4 border-green-200 pl-4">
+      <h3 className="text-lg sm:text-xl font-semibold text-gray-800 block">B.Tech (Computer Science)</h3>
+      <p className="text-gray-600 mt-1">Rajiv Gandhi Proudyogiki Vishwavidyalaya</p>
+      <p className="text-sm text-gray-500 mt-1">Aug 2018 - Jun 2022 | 7.46/10 CGPA</p>
+    </div>
+  </div>
+</motion.section>
 
         {/* Certifications Section */}
         <motion.section 
-          variants={itemVariants}
-          className="mb-16 bg-white rounded-xl p-8 shadow-lg"
-        >
-          <h2 className="text-3xl font-bold mb-8 flex items-center">
-            <BookOpenIcon className="w-8 h-8 mr-2 text-green-500" />
-            Certifications
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {certifications.map((cert, index) => (
-              <motion.div 
-                key={index}
-                whileHover={{ translateY: -5 }}
-                className="p-6 border rounded-lg hover:shadow-md transition-shadow"
-              >
-                <a
-  href={cert.link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:text-blue-600 transition-colors"
+  variants={itemVariants}
+  className="mb-16 bg-gradient-to-r from-blue-100 to-green-100 rounded-xl p-6 sm:p-8 shadow-lg section-card"
 >
-  <h3 className="text-lg font-semibold">{cert.name}</h3>
-</a>
-                <p className="text-gray-600 mt-2">{cert.issuer}</p>
-                <p className="text-sm text-gray-500 mt-2">Completed: {cert.year}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
+  <h2 className="text-2xl sm:text-3xl font-bold mb-8 flex items-center text-gray-800">
+    <BookOpenIcon className="w-8 h-8 mr-2 text-green-500" />
+    Certifications
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-6">
+    {certifications.map((cert, index) => (
+      <motion.div 
+        key={index}
+        whileHover={{ translateY: -5 }}
+        className="p-6 border rounded-lg hover:shadow-md transition-shadow"
+      >
+        <a
+          href={cert.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-blue-600 transition-colors"
+        >
+          <h3 className="text-base sm:text-lg font-semibold text-gray-800 block">{cert.name}</h3>
+        </a>
+        <p className="text-gray-600 mt-2">Issuer: {cert.issuer}</p>
+        <p className="text-sm text-gray-500 mt-2">Completed: {cert.year}</p>
+      </motion.div>
+    ))}
+  </div>
+</motion.section>
 
         {/* Projects Section */}
-<motion.section 
+        <motion.section 
   variants={itemVariants}
   className="mb-16"
 >
-  <h2 className="text-4xl font-bold text-center mb-12 flex items-center justify-center">
+  <h2 className="text-2xl sm:text-4xl font-bold text-center mb-12 flex items-center justify-center text-gray-800">
     <ChartBarIcon className="w-8 h-8 mr-2 text-purple-500" />
     Featured Projects
   </h2>
@@ -263,10 +263,10 @@ export default function Home() {
         key={index}
         variants={itemVariants}
         whileHover={{ scale: 1.02 }}
-        className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+        className="bg-gradient-to-r from-blue-100 to-green-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all section-card"
       >
         <div className="flex justify-between items-start mb-4">
-          <h3 className="text-2xl font-bold text-gray-800">{project.title}</h3>
+          <h3 className="text-lg sm:text-2xl font-bold text-gray-800 block">{project.title}</h3>
           <Link
             href={project.link}
             target="_blank"
@@ -292,7 +292,7 @@ export default function Home() {
           {project.tech.map((tech, i) => (
             <span 
               key={i}
-              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+              className="px-3 py-1 bg-blue-200 text-blue-800 rounded-full text-sm"
             >
               {tech}
             </span>
@@ -303,11 +303,11 @@ export default function Home() {
   </div>
 </motion.section>
        {/* Contact Section */}
-<motion.section 
+       <motion.section 
   variants={itemVariants}
-  className="mb-16 bg-white rounded-xl p-8 shadow-lg"
+  className="mb-16 bg-gradient-to-r from-blue-100 to-green-100 rounded-xl p-6 sm:p-8 shadow-lg section-card"
 >
-  <h2 className="text-4xl font-bold text-center mb-12 flex items-center justify-center">
+  <h2 className="text-2xl sm:text-4xl font-bold text-center mb-12 flex items-center justify-center text-gray-800">
     <EnvelopeIcon className="w-8 h-8 mr-2 text-red-500" />
     Get in Touch
   </h2>
@@ -321,7 +321,7 @@ export default function Home() {
       >
         <EnvelopeIcon className="w-6 h-6 mr-4 text-blue-600" />
         <div>
-          <h3 className="font-semibold text-gray-800">Email</h3>
+          <h3 className="font-semibold text-gray-800 block">Email</h3>
           <a 
             href="mailto:nirajrahul1@gmail.com" 
             className="text-gray-600 hover:text-blue-600"
@@ -337,7 +337,7 @@ export default function Home() {
       >
         <GlobeAltIcon className="w-6 h-6 mr-4 text-green-600" />
         <div>
-          <h3 className="font-semibold text-gray-800">Location</h3>
+          <h3 className="font-semibold text-gray-800 block">Location</h3>
           <p className="text-gray-600">Asansol, West Bengal, India</p>
         </div>
       </motion.div>
