@@ -82,7 +82,7 @@ export default function Home() {
       title: "Onilne Movie Ticket Booking System",
       description: "React + Spring Boot application",
       tech: ["React", "Spring Boot", "AWS", "MySQL"],
-      link: "https://github.com/RahulKumar035/Onilne-Movie-Ticket-Booking-System",
+      link: "https://rahul-movie-tickect-app.netlify.app",
       achievements: [
         "User-friendly booking interface",
         "AWS deployment",
